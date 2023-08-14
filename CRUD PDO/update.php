@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':newName', $newName);
         $stmt->bindParam(':newEmail', $newEmail);
         $stmt->bindParam(':newsalary', $newsalary);
+        // $stmt -> bindParam('ssi',$userId , $newName , $newEmail , $newsalary);
         $stmt->execute();
 
         header("Location: display.php");
@@ -42,11 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2>Edit User Data</h2>
     <form method="post" action=""> 
         <label>Name: </label>
-        <input type="text" name="name" ><br><br>
+        <input type="text" name="name" value="<?php echo $userData['name']?>" ><br><br>
         <label>Email: </label>
-        <input type="text" name="email" ><br><br>
+        <input type="text" name="email" value="<?php echo $userData['email']?>"  ><br><br>
         <label>Salary: </label>
-        <input type="text" name="salary" ><br><br>
+        <input type="text" name="salary"  value="<?php echo $userData['salary']?>" ><br><br>
 
         <button type="submit">Update</button>
     </form>

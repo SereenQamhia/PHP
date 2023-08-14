@@ -29,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
+            <?php
             require_once 'connectdatabase.php';
             try {
                 $stmt = $con->prepare("SELECT * FROM employe");
@@ -38,8 +38,11 @@
 
                 if (count($result) > 0) {
                     foreach ($result as $row) {
-                        echo "<tr><td>{$row['name']}</td><td>{$row['email']}</td><td>{$row['salary']}</td>
-                        <td><button type='button' class='btn btn-success'><a style='color:white;' href='update.php?id=". $row["emp-id"]. "' >Update</a></button></td>
+                        echo "<tr>
+                        <td>{$row['name']}</td>
+                        <td>{$row['email']}</td>
+                        <td>{$row['salary']}</td>
+                        <td><button type='button' class='btn btn-success'><a style='color:white;' href='update.php?id=" . $row["emp-id"] . "' >Update</a></button></td>
                         <td><button type='button' class='btn btn-danger'><a style='color:white;' href='delete.php?id=" . $row["emp-id"] . "'>Delete</a></button></td></tr>";
                     }
                 } else {

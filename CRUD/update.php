@@ -11,6 +11,9 @@ if (isset($_POST['submit'])) {
 
     $query = "UPDATE employe SET Name='$name', Email='$email', Salary='$salary' WHERE `emp-id`='$id'";
     $result = mysqli_query($conn, $query);
+    
+    $query2 = mysqli_query($conn, "SELECT * FROM employe WHERE `emp-id`='$id'");
+    $userData = mysqli_fetch_array( $query2);
 
       if ($result){
         header("Location: display.php");
@@ -35,13 +38,13 @@ if (isset($_POST['submit'])) {
     <h2> Update Employee Details</h2>
     <form method="post">
       <label for="Name">Name:</label>
-      <input type="text" id="Name" name="Name"><br>
+      <input type="text" id="Name" name="Name" value="<?php echo $userData['name']?>"><br>
         
       <label for="Email">Email:</label>
-      <input type="text" id="Email" name="Email"><br>
+      <input type="text" id="Email" name="Email" value="<?php echo $userData['email']?>"><br>
         
       <label for="Salary">Salary:</label>
-      <input type="text" id="Salary" name="Salary"><br>
+      <input type="text" id="Salary" name="Salary" value="<?php echo $userData["salary"]?>"><br>
         
       <button type="submit" name="submit">Update</button>
     </form>
