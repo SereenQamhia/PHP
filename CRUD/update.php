@@ -3,15 +3,15 @@ include 'connectdatabase.php';
 $id = $_GET['id'];
 
 if (isset($_POST['submit'])) {
-    $name = mysqli_real_escape_string($conn, $_POST['Name']);
-    $email = mysqli_real_escape_string($conn, $_POST['Email']);
-    $salary = mysqli_real_escape_string($conn, $_POST['Salary']);
+    $name = $_POST['Name'];
+    $email = $_POST['Email'];
+    $salary =$_POST['Salary'];
 
 
 
     $query = "UPDATE employe SET Name='$name', Email='$email', Salary='$salary' WHERE `emp-id`='$id'";
     $result = mysqli_query($conn, $query);
-    
+
     $query2 = mysqli_query($conn, "SELECT * FROM employe WHERE `emp-id`='$id'");
     $userData = mysqli_fetch_array( $query2);
 

@@ -2,9 +2,9 @@
 include 'connectdatabase.php';
 
 if (isset($_POST['submit'])) {
-    $name = mysqli_real_escape_string($conn, $_POST['Name']);
-    $email = mysqli_real_escape_string($conn, $_POST['Email']);
-    $salary = mysqli_real_escape_string($conn, $_POST['Salary']);
+    $name = $_POST['Name'];
+    $email = $_POST['Email'];
+    $salary = $_POST['Salary'];
 
     $query = "INSERT INTO `employe` (name, email, salary) VALUES ('$name', '$email', '$salary')";
     $result = mysqli_query($conn, $query);
